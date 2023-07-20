@@ -57,7 +57,7 @@ plt.show()
 
 cross_tab = pd.crosstab(data['VEHTYPE'], data['INJURY'])
 fig, ax = plt.subplots(figsize=(10,10))
-sns.heatmap(cross_tab, cmap='Blues', linewidths=0.5, linecolor="black")
+sns.heatmap(cross_tab, cmap='Blues', linewidths=0.5, linecolor="black", annot=True)
 plt.xlabel('INJURY')
 plt.ylabel('VEHICLE TYPE')
 plt.title('Heatmap of INJURY and Vehicle Type')
