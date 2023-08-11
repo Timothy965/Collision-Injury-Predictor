@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Collision Injury Predictor</title>
+</head>
+<body>
+    <h1>Collision Injury Predictor</h1>
+    <form id="prediction-form">
+        <label for="year">Year:</label>
+        <input type="text" id="year" name="year" required><br>
+
+        <label for="street1">Street 1:</label>
+        <input type="text" id="street1" name="street1" required><br>
+
+        <label for="street2">Street 2:</label>
+        <input type="text" id="street2" name="street2" required><br>
+
+        <!-- Add other input fields here -->
+
+        <button type="button" id="predict-button">Predict Injury</button>
+    </form>
+
+    <div id="result" style="display: none;">
+        <p>Predicted Injury Probability: <span id="predicted-injury"></span></p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const predictButton = document.getElementById('predict-button');
+            const resultDiv = document.getElementById('result');
+            const predictedInjurySpan = document.getElementById('predicted-injury');
+
+            predictButton.addEventListener('click', async () => {
+                const formData = new FormData(document.getElementById('prediction-form'));
+                const data = {};
+                formData.forEach((value, key) => {
+                    data[key] = value;
+                });
+
+                try {
+                    const response = await fetch('/api/predict', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(data),
+                    });
+
+                    const result = await response.json();
+                    predictedInjurySpan.textContent = result.predictedInjury;
+                    resultDiv.style.display = 'block';
+                } catch (error) {
+                    console.error('Error predicting injury:', error);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
