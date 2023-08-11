@@ -1,59 +1,71 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Collision Injury Predictor</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Collision Injury Predictor</title>
 </head>
-
 <body>
+  <h1>Collision Injury Predictor</h1>
 
-    <form action="/predict" method="POST">
+    <label>Year:</label>
+    <input type="text" id="year" /><br>
 
-        <label for="YEAR">YEAR:</label>
-        <input type="number" id="YEAR" name="YEAR" min="2006" max="2022"><br><br>
+    <label>Street 1:</label>
+    <input type="text" id="street1" /><br>
 
-        <label for="STREET1">STREET1:</label>
-        <input type="text" name="STREET1" required><br>
+    <label>Street 2:</label>
+    <input type="text" id="street2" /><br>
 
-        <label for="STREET2">STREET2:</label>
-        <select id="STREET2" name="STREET2">
-            <option value="1">Yes</option>
-            <option value="0">No</option>
-        </select><br><br>
+    <label>Road Class:</label>
+    <input type="text" id="roadClass" /><br>
 
-        <label for="ROAD_CLASS">ROAD_CLASS:</label> 
-        <input type="text" id="ROAD_CLASS" name="ROAD_CLASS" required><br>
-        <label for="DISTRICT">DISTRICT:</label> 
-        <input type="text" id="DISTRICT" name="DISTRICT" required><br>
-        <label for="LOCCOORD">LOCCOORD:</label> 
-        <input type="text" id="LOCCOORD" name="LOCCOORD" required><br>
-        <label for="TRAFFCTL">TRAFFCTL:</label> 
-       <input type="text" id="TRAFFCTL" name="TRAFFCTL" required><br>
-        <label for="VISIBILITY">VISIBILITY:</label> 
-         <input type="text" id="VISIBILITY" name="VISIBILITY" required><br>
-        <label for="LIGHT">LIGHT:</label> 
-        <input type="text" id="LIGHT" name="LIGHT" required><br>
-        <label for="RDSFCOND">RDSFCOND:</label> 
-         <input type="text" id="RDSFCOND" name="RDSFCOND" required><br>
-         <label for="IMPACTYPE">IMPACTYPE:</label> 
-      <input type="text" id="IMPACTYPE" name="IMPACTYPE" required><br>
-      <label for="INVTYPE">INVTYPE:</label>
-       <input type="text" id="INVTYPE" name="INVTYPE" required><br>
-       <label for="INVAGE">INVAGE:</label>
-        <input type="number" id="INVAGE" name="INVAGE" required><br>
-        <label for="VEHTYPE">VEHTYPE:</label>
-        <input type="text" id="VEHTYPE" name="VEHTYPE" required><br>
-        <label for="MANOEUVER">MANOEUVER:</label>
-        <input type="text" id="MANOEUVER" name="MANOEUVER" required><br>
-       
+    <label>District:</label>
+    <input type="text" id="district" /><br>
 
-        <input type="submit" value="Submit">
+    <label>Location Coordinates:</label>
+    <input type="text" id="locCoord" /><br>
 
-    </form>
+    <label>Traffic Control:</label>
+    <input type="text" id="traffCtl" /><br>
 
+    <label>Visibility:</label>
+    <input type="text" id="visibility" /><br>
+
+    <label>Light:</label>
+    <input type="text" id="light" /><br>
+
+    <label>Road Surface Condition:</label>
+    <input type="text" id="rdsfCond" /><br>
+
+    <label>Impact Type:</label>
+    <input type="text" id="impactType" /><br>
+
+    <label>Involved Person Type:</label>
+    <input type="text" id="invType" /><br>
+
+    <label>Involved Person Age:</label>
+    <input type="text" id="invAge" /><br>
+
+    <label>Vehicle Type:</label>
+    <input type="text" id="vehType" /><br>
+
+    <label>Manoeuver:</label>
+    <input type="text" id="manoeuver" /><br>
+
+    <!-- ... (continue with the rest of the form inputs) -->
+
+    <label>Is Rush Hour:</label>
+    <input type="text" id="isRushHr" /><br>
+
+
+  <button id="predictButton">Predict Injury</button>
+
+  <div id="predictionResult" style="display: none;">
+    <p>Predicted Injury Probability: <span id="predictedInjury"></span></p>
+  </div>
+
+  <script src="script.js"></script>
 </body>
-
 </html>
