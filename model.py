@@ -23,11 +23,13 @@ from imblearn.over_sampling import SMOTE
 import numpy as np
 
 # Describe data
-#os.getcwd()
+
+os.getcwd()
 
 # define the path that locates the folder
-#path = r'C:/Users/lou22/Documents/SoftwareEngineeringEducation/ClassesSummer2023/COMP247SupLearn/Collision-Injury-Predictor'
-#os.chdir(path)
+path = r'C:/Users/lou22/Documents/SoftwareEngineeringEducation/ClassesSummer2023/COMP247SupLearn/Collision-Injury-Predictor'
+os.chdir(path)
+
 data = pd.read_csv(r"./Dataset/KSI.csv")
 
 
@@ -255,6 +257,28 @@ y = data['ACCLASS'].astype(int)
 
 
 features = data.drop('ACCLASS', axis=1)
+
+
+
+print(features.columns)
+#print out the unique value in each col in features
+def get_unique_vals(col):
+    print(f"Unique vals for ' {col}' :")
+    for val in features[col].unique():
+        print(val)
+        
+get_unique_vals('STREET1')
+    
+    
+# =============================================================================
+# for col in features.columns:
+#     print('----------------')
+#     print(f"Unique vals for ' {col}' :")
+#     for val in features[col].unique():
+#         print(val)
+# =============================================================================
+       
+
 # Transform the data
 transformed_features = preprocessor.fit_transform(features).toarray()
 
