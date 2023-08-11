@@ -1,11 +1,13 @@
 from flask import Flask, render_template, request, jsonify
-import pickle
+#import pickle
+import joblib
+import sys
 
 app = Flask(__name__)
 
 #Load pipeline
 with open('full_pipeline.pkl', 'rb') as pkl:
-    pipeline=pickle.load(pkl)
+    pipeline=joblib.load(pkl)
 
 @app.route('/')
 def index():
@@ -109,4 +111,11 @@ def predict():
     return jsonify({'prediction': prediction[0]})
 
 if __name__ == '__main__':
+    try:
+        port=int(sys.argv[1])
+
+    except:
+        port=8000
+
+        
     app.run(debug=True)
