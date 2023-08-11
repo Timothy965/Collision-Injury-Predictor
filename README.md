@@ -3,11 +3,11 @@ COMP247-S23
 Group 5
 
 Created by:
-Dilip, Nandagopan
-Hoang, Viet Nguyen
-Lou, Yi-Lin
-Sheriff, Binet
-Thomas, Timothy
+Nandagopan Dilip, 
+Viet Nguyen Hoang, 
+Yi-Lin Lou, 
+Binet Sheriff, 
+Timothy Thomas
 
 
 This is a group project for an AI class involving developing an AI model to predict fatality of an accident. The data this model trained on is the Killed or Severely Injured (KSI) dataset 
