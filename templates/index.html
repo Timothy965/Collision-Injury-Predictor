@@ -56,6 +56,78 @@
 
     <!-- ... (continue with the rest of the form inputs) -->
 
+    <label>Driver Action:</label>
+    <input type="text" id="drivAct" /><br>
+
+    <label>Driver Condition:</label>
+    <input type="text" id="drivCond" /><br>
+
+    <label>Pedestrian Type:</label>
+    <input type="text" id="pedType" /><br>
+
+    <label>Pedestrian Action:</label>
+    <input type="text" id="pedAct" /><br>
+
+    <label>Pedestrian Condition:</label>
+    <input type="text" id="pedCond" /><br>
+
+    <label>Cyclist Type:</label>
+    <input type="text" id="cyclistType" /><br>
+
+    <label>Cyclist Action:</label>
+    <input type="text" id="cycAct" /><br>
+
+    <label>Cyclist Condition:</label>
+    <input type="text" id="cycCond" /><br>
+
+    <label>Pedestrian:</label>
+    <input type="text" id="pedestrian" /><br>
+
+    <label>Cyclist:</label>
+    <input type="text" id="cyclist" /><br>
+
+    <label>Automobile:</label>
+    <input type="text" id="automobile" /><br>
+
+    <label>Motorcycle:</label>
+    <input type="text" id="motorcycle" /><br>
+
+    <label>Truck:</label>
+    <input type="text" id="truck" /><br>
+
+    <label>Transit City Vehicle:</label>
+    <input type="text" id="trsnCityVeh" /><br>
+
+    <label>Emergency Vehicle:</label>
+    <input type="text" id="emergVeh" /><br>
+
+    <label>Passenger:</label>
+    <input type="text" id="passenger" /><br>
+
+    <label>Speeding:</label>
+    <input type="text" id="speeding" /><br>
+
+    <label>Aggressive Driving:</label>
+    <input type="text" id="agDriv" /><br>
+
+    <label>Red Light:</label>
+    <input type="text" id="redLight" /><br>
+
+    <label>Alcohol:</label>
+    <input type="text" id="alcohol" /><br>
+
+    <label>Disability:</label>
+    <input type="text" id="disability" /><br>
+
+    <label>Neighbourhood 158:</label>
+    <input type="text" id="neighbourhood158" /><br>
+
+    <label>Month:</label>
+    <input type="text" id="month" /><br>
+
+    <label>Day of Week:</label>
+    <input type="text" id="dayOfWeek" /><br>
+
     <label>Is Rush Hour:</label>
     <input type="text" id="isRushHr" /><br>
 
@@ -66,6 +138,6 @@
     <p>Predicted Injury Probability: <span id="predictedInjury"></span></p>
   </div>
 
-  <script src="./script.js"></script>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
