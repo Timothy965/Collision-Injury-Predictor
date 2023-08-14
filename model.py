@@ -419,5 +419,7 @@ full_pipeline = Pipeline([
     ('predictor', best_rf)
 ])
 
+model_columns = list(X.columns)
+dump(model_columns, './model_columns.pkl')
 dump(full_pipeline, './full_pipeline.pkl')
 dump(best_rf, './best_rf.pkl')
