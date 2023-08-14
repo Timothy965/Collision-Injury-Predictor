@@ -17,8 +17,11 @@ def predict():
             query = query.reindex(columns=model_columns, fill_value=0)
             print(query)
             prediction = list(model.predict(query))
+            f = open('test_data_target.json')
+            test_data_target = f.read()
             print({'prediction': str(prediction)})
-            return jsonify({'prediction': str(prediction)})
+            print({'actual': str(test_data_target)})
+            return jsonify({'prediction': str(prediction)}, {'actual': str(test_data_target)})
 
         except:
 

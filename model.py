@@ -444,26 +444,14 @@ dump(model_columns, './model_columns.pkl')
 dump(preprocessor, './preprocessing_pipeline.pkl')
 dump(best_rf, './best_rf.pkl')
 
-test_data_postman_1 = X_test.iloc[3:4, :]
-test_data_target_postman_1 = y_test.iloc[3:4]
+test_data_postman = X_test.iloc[3:10, :]
+test_data_target_postman = y_test.iloc[3:10]
 
-test_data_postman_2 = X_test.iloc[4:5, :]
-test_data_target_postman_2 = y_test.iloc[4:5]
+json_data = test_data_postman.to_json(orient='records')
+json_data_target = test_data_target_postman.to_json(orient='records')
 
-json_data_1 = test_data_postman_1.to_json(orient='records')
-json_data_target_1 = test_data_target_postman_1.to_json(orient='records')
+with open('test_data.json', 'w') as f:
+    f.write(json_data)
 
-json_data_2 = test_data_postman_2.to_json(orient='records')
-json_data_target_2 = test_data_target_postman_2.to_json(orient='records')
-
-with open('./test_data_postman_1.json', 'w') as f:
-    f.write(json_data_1)
-
-with open('./test_data_target_postman_1.json', 'w') as f:
-    f.write(json_data_target_1)
-
-with open('./test_data_postman_2.json', 'w') as f:
-    f.write(json_data_2)
-
-with open('./test_data_target_postman_2.json', 'w') as f:
-    f.write(json_data_target_2)
+with open('test_data_target.json', 'w') as f:
+    f.write(json_data_target)
