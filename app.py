@@ -82,6 +82,5 @@ def predict():
     # Return the prediction to the user
     return jsonify({'prediction': prediction[0]})
 
-    app.run(debug=True, host='0.0.0.0', port=port)
-
-
+port = 5000
+app.run(debug=True, host='0.0.0.0', port=port)
