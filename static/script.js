@@ -26,19 +26,6 @@ document.addEventListener('DOMContentLoaded', function () {
         const cyclistType = document.getElementById('cyclistType').value;
         const cycAct = document.getElementById('cycAct').value;
         const cycCond = document.getElementById('cycCond').value;
-        const pedestrian = document.getElementById('pedestrian').value;
-        const cyclist = document.getElementById('cyclist').value;
-        const automobile = document.getElementById('automobile').value;
-        const motorcycle = document.getElementById('motorcycle').value;
-        const truck = document.getElementById('truck').value;
-        const trsnCityVeh = document.getElementById('trsnCityVeh').value;
-        const emergVeh = document.getElementById('emergVeh').value;
-        const passenger = document.getElementById('passenger').value;
-        const speeding = document.getElementById('speeding').value;
-        const agDriv = document.getElementById('agDriv').value;
-        const redLight = document.getElementById('redLight').value;
-        const alcohol = document.getElementById('alcohol').value;
-        const disability = document.getElementById('disability').value;
         const neighbourhood158 = document.getElementById('neighbourhood158').value;
         const month = document.getElementById('month').value;
         const dayOfWeek = document.getElementById('dayOfWeek').value;
@@ -68,19 +55,6 @@ document.addEventListener('DOMContentLoaded', function () {
             'CYCLISTYPE': [cyclistType],
             'CYCACT': [cycAct],
             'CYCCOND': [cycCond],
-            'PEDESTRIAN': [pedestrian],
-            'CYCLIST': [cyclist],
-            'AUTOMOBILE': [automobile],
-            'MOTORCYCLE': [motorcycle],
-            'TRUCK': [truck],
-            'TRSN_CITY_VEH': [trsnCityVeh],
-            'EMERG_VEH': [emergVeh],
-            'PASSENGER': [passenger],
-            'SPEEDING': [speeding],
-            'AG_DRIV': [agDriv],
-            'REDLIGHT': [redLight],
-            'ALCOHOL': [alcohol],
-            'DISABILITY': [disability],
             'NEIGHBOURHOOD_158': [neighbourhood158],
             'MONTH': [month],
             'DAY_OF_WEEK': [dayOfWeek],

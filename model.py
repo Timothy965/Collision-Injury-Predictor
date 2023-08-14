@@ -27,7 +27,7 @@ import numpy as np
 os.getcwd()
 
 # define the path that locates the folder
-path = r'C:/Users/lou22/Documents/SoftwareEngineeringEducation/ClassesSummer2023/COMP247SupLearn/Collision-Injury-Predictor'
+path = r'D:/COLLEGE/SUMMER_2023/COMP247 Supervised Learning/Project/Collision-Injury-Predictor'
 os.chdir(path)
 
 data = pd.read_csv(r"./Dataset/KSI.csv")

@@ -1,59 +1,101 @@
-﻿<!DOCTYPE html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Collision Injury Predictor</title>
 </head>
 <body>
     <h1>Collision Injury Predictor</h1>
-    <form id="prediction-form">
-        <label for="year">Year:</label>
-        <input type="text" id="year" name="year" required><br>
 
-        <label for="street1">Street 1:</label>
-        <input type="text" id="street1" name="street1" required><br>
+    <label>Year:</label>
+    <input type="text" id="year" name="YEAR" /><br>
 
-        <label for="street2">Street 2:</label>
-        <input type="text" id="street2" name="street2" required><br>
+    <label>Street 1:</label>
+    <input type="text" id="street1" name="STREET1" /><br>
 
-        
+    <label>Street 2:</label>
+    <input type="text" id="street2" name="STREET2" /><br>
 
-        <button type="button" id="predict-button">Predict Injury</button>
-    </form>
+    <label>Road Class:</label>
+    <input type="text" id="roadClass" name="ROAD_CLASS" /><br>
 
-    <div id="result" style="display: none;">
-        <p>Predicted Injury Probability: <span id="predicted-injury"></span></p>
+    <label>District:</label>
+    <input type="text" id="district" name="DISTRICT" /><br>
+
+    <label>Location Coordinates:</label>
+    <input type="text" id="locCoord" name="LOCCOORD" /><br>
+
+    <label>Traffic Control:</label>
+    <input type="text" id="traffCtl" name="TRAFFCTL" /><br>
+
+    <label>Visibility:</label>
+    <input type="text" id="visibility" name="VISIBILITY" /><br>
+
+    <label>Light:</label>
+    <input type="text" id="light" name="LIGHT" /><br>
+
+    <label>Road Surface Condition:</label>
+    <input type="text" id="rdsfCond" name="RDSFCOND" /><br>
+
+    <label>Impact Type:</label>
+    <input type="text" id="impactType" name="IMPACTYPE" /><br>
+
+    <label>Involved Person Type:</label>
+    <input type="text" id="invType" name="INVTYPE" /><br>
+
+    <label>Involved Person Age:</label>
+    <input type="text" id="invAge" name="INVAGE" /><br>
+
+    <label>Vehicle Type:</label>
+    <input type="text" id="vehType" name="VEHTYPE" /><br>
+
+    <label>Manoeuver:</label>
+    <input type="text" id="manoeuver" name="MANOEUVER" /><br>
+
+    <label>Driver Action:</label>
+    <input type="text" id="drivAct" name="DRIVACT" /><br>
+
+    <label>Driver Condition:</label>
+    <input type="text" id="drivCond" name="DRIVCOND" /><br>
+
+    <label>Pedestrian Type:</label>
+    <input type="text" id="pedType" name="PEDTYPE" /><br>
+
+    <label>Pedestrian Action:</label>
+    <input type="text" id="pedAct" name="PEDACT" /><br>
+
+    <label>Pedestrian Condition:</label>
+    <input type="text" id="pedCond" name="PEDCOND" /><br>
+
+    <label>Cyclist Type:</label>
+    <input type="text" id="cyclistType" name="CYCLISTYPE" /><br>
+
+    <label>Cyclist Action:</label>
+    <input type="text" id="cycAct" name="CYCACT" /><br>
+
+    <label>Cyclist Condition:</label>
+    <input type="text" id="cycCond" name="CYCCOND" /><br>
+
+    <label>Neighbourhood 158:</label>
+    <input type="text" id="neighbourhood158" name="NEIGHBOURHOOD_158" /><br>
+
+    <label>Month:</label>
+    <input type="text" id="month" name="MONTH" /><br>
+
+    <label>Day of Week:</label>
+    <input type="text" id="dayOfWeek" name="DAY_OF_WEEK" /><br>
+
+    <label>Is Rush Hour:</label>
+    <input type="text" id="isRushHr" name="IS_RUSH_HR" /><br>
+
+
+    <button id="predictButton">Predict Injury</button>
+
+    <div id="predictionResult" style="display: none;">
+        <p>Predicted Injury Probability: <span id="predictedInjury"></span></p>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const predictButton = document.getElementById('predict-button');
-            const resultDiv = document.getElementById('result');
-            const predictedInjurySpan = document.getElementById('predicted-injury');
-
-            predictButton.addEventListener('click', async () => {
-                const formData = new FormData(document.getElementById('prediction-form'));
-                const data = {};
-                formData.forEach((value, key) => {
-                    data[key] = value;
-                });
-
-                try {
-                    const response = await fetch('/api/predict', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify(data),
-                    });
-
-                    const result = await response.json();
-                    predictedInjurySpan.textContent = result.predictedInjury;
-                    resultDiv.style.display = 'block';
-                } catch (error) {
-                    console.error('Error predicting injury:', error);
-                }
-            });
-        });
-    </script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
