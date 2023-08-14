@@ -24,11 +24,11 @@ import numpy as np
 
 # Describe data
 
-os.getcwd()
+# os.getcwd()
 
-# define the path that locates the folder
-path = r'D:/COLLEGE/SUMMER_2023/COMP247 Supervised Learning/Project/Collision-Injury-Predictor'
-os.chdir(path)
+# # define the path that locates the folder
+# path = r'D:/COLLEGE/SUMMER_2023/COMP247 Supervised Learning/Project/Collision-Injury-Predictor'
+# os.chdir(path)
 
 data = pd.read_csv(r"./Dataset/KSI.csv")
 
@@ -438,12 +438,8 @@ plt.show()
 # dump the model
 from joblib import dump
 
-full_pipeline = Pipeline([
-    ('preprocessor', preprocessor),
-    ('predictor', best_rf)
-])
 
 model_columns = list(X.columns)
 dump(model_columns, './model_columns.pkl')
-dump(full_pipeline, './full_pipeline.pkl')
+dump(preprocessor, './preprocessing_pipeline.pkl')
 dump(best_rf, './best_rf.pkl')
