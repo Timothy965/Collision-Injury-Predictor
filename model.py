@@ -331,15 +331,55 @@ Build the model
 
 # Random Forest
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.ensemble import VotingClassifier
+from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.svm import SVC
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import ExtraTreesClassifier
+from sklearn.model_selection import cross_val_score
+from sklearn.model_selection import KFold as KFOLD
+from sklearn.metrics import precision_score, recall_score, accuracy_score, f1_score, roc_curve
 
+# Define the classifiers
+clr_V = LogisticRegression(max_iter=1400)
+rfc_V = RandomForestClassifier()
+svc_V = SVC()
+dct_V = DecisionTreeClassifier(criterion="entropy", max_depth=42)
+etc_V = ExtraTreesClassifier()
+
+# Create the voting classifier
+voting_classifier = VotingClassifier(estimators=[('clf1', clr_V), ('clf2', rfc_V), ('clf3', svc_V), ('clf4', dct_V), ('clf5', etc_V)], voting='hard')
+
+# Fit the training data to the voting classifier
+voting_classifier.fit(X_smote, y_smote)
+
+# List of classifiers
+classifiers = [clr_V, rfc_V, svc_V, dct_V, etc_V, voting_classifier]
+
+# Loop through each classifier
+for clf in classifiers:
+    clf_name = clf.__class__.__name__
+    print(f"\nClassifier: {clf_name}")
+    
+    # Fit the classifier to the training data
+    clf.fit(X_smote, y_smote)
+    
+    # Predict the test instances
+    predictions = clf.predict(X_test)
+    
+    # Loop through the first three instances
+    print('Precision score: {:.4f}'.format(precision_score(y_test, predictions)))
+    print('Recall score: {:.4f}'.format(recall_score(y_test, predictions)))
+    print('Accuracy score: {:.4f}'.format(accuracy_score(y_test, predictions)))
+    print('F1 score: {:.4f}'.format(f1_score(y_test, predictions)))
+
+# Random Forest
 rf = RandomForestClassifier(n_estimators=100, random_state=42)
 
 rf.fit(X_smote, y_smote)
 
 # cross validation
-from sklearn.model_selection import cross_val_score
-from sklearn.model_selection import KFold as KFOLD
-
 crossvalidation = KFOLD(n_splits=10, shuffle=True, random_state=42)
 
 scores = cross_val_score(rf, X_smote, y_smote, cv=crossvalidation, scoring='f1')
@@ -358,7 +398,6 @@ print('Confusion Matrix:\n', cfs_matrix_og)
 
 # precision and recall
 
-from sklearn.metrics import precision_score, recall_score, accuracy_score, f1_score, roc_curve
 
 print('Precision score: {:.4f}'.format(precision_score(y_test, y_pred)))
 print('Recall score: {:.4f}'.format(recall_score(y_test, y_pred)))
@@ -444,11 +483,34 @@ dump(model_columns, './model_columns.pkl')
 dump(preprocessor, './preprocessing_pipeline.pkl')
 dump(best_rf, './best_rf.pkl')
 
-test_data_postman = X_test.iloc[3:10, :]
-test_data_target_postman = y_test.iloc[3:10]
+# test_data_postman = X_test.iloc[3:10, :]
+# test_data_target_postman = y_test.iloc[3:10]
 
-json_data = test_data_postman.to_json(orient='records')
-json_data_target = test_data_target_postman.to_json(orient='records')
+# json_data = test_data_postman.to_json(orient='records')
+# json_data_target = test_data_target_postman.to_json(orient='records')
+
+# with open('test_data.json', 'w') as f:
+#     f.write(json_data)
+
+# with open('test_data_target.json', 'w') as f:
+#     f.write(json_data_target)
+
+    
+np.random.seed(42)
+
+# Define the number of samples you want to extract
+num_samples = 10
+
+# Randomly select indices for the samples
+random_indices = np.random.choice(X_test.index, num_samples, replace=False)
+
+# Extract the portion of the DataFrame using the random indices
+portion_data = X_test.loc[random_indices]
+portion_targets = y_test.loc[random_indices]
+
+# Convert the portion of features and targets to JSON
+json_data = portion_data.to_json(orient='records')
+json_data_target = portion_targets.to_json(orient='records')
 
 with open('test_data.json', 'w') as f:
     f.write(json_data)
