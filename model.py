@@ -499,7 +499,7 @@ dump(best_rf, './best_rf.pkl')
 np.random.seed(42)
 
 # Define the number of samples you want to extract
-num_samples = 100
+num_samples = 10
 
 # Randomly select indices for the samples
 random_indices = np.random.choice(X_test.index, num_samples, replace=False)
